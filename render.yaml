@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: erp-payroll
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: SESSION_DRIVER
+        value: database
+      - key: CACHE_STORE
+        value: database
+      - key: QUEUE_CONNECTION
+        value: database
+databases:
+  - name: erp-db
+    plan: free
+    databaseName: erp
+    user: erp
